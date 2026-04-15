@@ -1,0 +1,35 @@
+/* Clean & Academic Theme */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300&family=Open+Sans:wght@300;400;600&display=swap');
+
+.reveal {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fdfdfc;
+  color: #333333;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: 'Merriweather', serif;
+  color: #1a365d;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.reveal h1 {
+  font-size: 2.8em;
+  color: #0f172a;
+}
+
+.reveal h2 {
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 10px;
+}
+
+.reveal a {
+  color: #2563eb;
+}
+
+.reveal .slide-number {
+  color: #64748b;
+  background-color: transparent;
+}

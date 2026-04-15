@@ -1,0 +1,160 @@
+---
+title: "The Neural Vault"
+subtitle: "How to Build a Second Brain with Obsidian and AI"
+author: "AJ"
+date: "2026-04-10"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    background-transition: fade
+    slide-number: true
+    embed-resources: true
+    center: true
+    css: style2.css
+    incremental: true
+---
+
+## The Problem: AI Amnesia {.smaller}
+
+**Every time you open a new chat, the AI starts from scratch.**
+
+::: {.incremental}
+- **Constant Re-explaining**: You spend the first ten minutes rebuilding context — your project, your conventions, your decisions, your background. Then the session ends. Next time, you do it again.
+- **Nothing Accumulates**: The model is sharp but stateless. That statelessness is the real ceiling, not the model's intelligence.
+- **Enterprise Solutions Are Overkill**: Companies use RAG and vector databases, but for personal use they are overbuilt, opaque, and fragile. You cannot debug a cosine similarity score by opening a markdown file.
+:::
+
+---
+
+## How This Started {.smaller}
+
+**A conversation about markdown files sent me down a rabbit hole.**
+
+::: {.incremental}
+- A conversation with a professor about markdown note-taking workflows was the spark. I went home that night and started building.
+- I was managing complex, multi-threaded technical work and kept hitting the same wall: re-explaining context every single session.
+- The result is the **Neural Vault** — a structured Obsidian vault that works alongside Claude's native memory to give you persistent, portable, project-specific context across every AI session.
+- No vector database. No infrastructure. Just markdown files, a disciplined workflow, and a few shell scripts.
+:::
+
+---
+
+## Inside the Obsidian Brain {.smaller}
+
+**Your knowledge, connected and readable by both you and the AI.**
+
+:::: {.columns}
+
+::: {.column width="45%"}
+<br>
+
+- **Inbox**: Raw capture — quick, unorganized thoughts.
+- **Wiki**: Structured knowledge the AI helped you write.
+- **Meta**: `About_Me`, Index, Prompts, and Session Log.
+- **Archive**: Deprecated notes, kept for history.
+- **Agent Sandbox**: A messy workspace for AI agents — kept separate so your vault stays clean.
+:::
+
+::: {.column width="55%"}
+![](obsidian_graph.png){width="100%" fig-align="center"}
+:::
+
+::::
+
+---
+
+## Karpathy's System vs. The Neural Vault {.smaller}
+
+**Two independent approaches to the same problem — and where each one wins.**
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Andrej Karpathy
+*The AI as Librarian*
+
+Karpathy published his LLM Knowledge Base method in April 2025. His core insight: have the LLM incrementally build and maintain a persistent wiki from raw sources.
+
+**What he solved:**
+
+- The `raw/` → `wiki/` ingestion pipeline
+- LLM-written, human-curated notes
+- Health checks to find gaps and inconsistencies
+- Web Clipper ingestion for articles and links
+:::
+
+::: {.column width="50%"}
+### AJ — The Neural Vault
+*The AI as Collaborator*
+
+Built independently before Karpathy's post, starting from a different problem: how to load context into an active session, not just store it.
+
+**What AJ built independently:**
+
+- **Two-layer memory split**: Claude's ambient memory (who you are) + Obsidian wiki (what you know)
+- **Context Injection Protocol**: a formal prompt template — a structured handshake between your vault and the model
+- **`COMMIT:` flag**: Claude marks insights worth saving mid-session
+- **Auto-save daemon**: every file save = a silent git commit. Zero manual steps. Fully reversible.
+:::
+
+::::
+
+---
+
+## The Ultimate Setup: Both Together {.smaller}
+
+**Use Karpathy's method to *build* the vault. Use AJ's method to *load* it.**
+
+![](context_engineering.png){width="68%" fig-align="center"}
+
+::: {.fragment}
+<div style="font-size: 0.85em; color: #475569; text-align: center; margin-top: 10px;">
+Karpathy fills the vault with knowledge from what you read. AJ's system loads that vault into every active work session — so the AI already knows your goals, your style, and what you decided yesterday.
+</div>
+:::
+
+---
+
+## The Result: Compounding Intelligence {.smaller}
+
+**The system gets better every time you use it.**
+
+::: {.incremental}
+- **Stop Re-explaining**: The AI always knows your context because you hand it the ready-made summary.
+- **Ideas Are Never Lost**: Every good session turns into a permanent note in your notebook.
+- **You Own Everything**: Plain markdown files on your computer. No vendor lock-in. Switch models tomorrow — the vault comes with you.
+- **An Investment in the Future**: The notebook you build today will make whatever AI you use tomorrow smarter and more aligned with you.
+:::
+
+. . .
+
+> *"The vault you build today is the training set for the model you run tomorrow."*
+
+---
+
+## Access the Full System {.smaller}
+
+**All scripts, templates, and documentation — open source on GitHub.**
+
+:::: {.columns}
+
+::: {.column width="55%"}
+<br>
+
+The complete Neural Vault system is available on GitHub, including:
+
+- The full vault folder structure
+- The Context Injection Protocol prompt template
+- The `vault-autosave.sh` daemon script
+- The `About_Me.md` starter template
+- This presentation (`.qmd` source)
+
+**github.com/rsm-aaljarallah**
+:::
+
+::: {.column width="45%"}
+![](github_qr.png){width="65%" fig-align="center"}
+:::
+
+::::
