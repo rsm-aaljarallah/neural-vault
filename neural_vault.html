@@ -1121,9 +1121,9 @@ AJ
 </div>
 </div></div>
 </section>
-<section id="karpathys-system-vs.-the-neural-vault" class="slide level2 smaller center">
-<h2>Karpathy’s System vs. The Neural Vault</h2>
-<p><strong>Two independent approaches to the same problem — and where each one wins.</strong></p>
+<section id="standing-on-each-others-shoulders" class="slide level2 smaller center">
+<h2>Standing on Each Other’s Shoulders</h2>
+<p><strong>Karpathy and I arrived at the same problem from different directions — and solved different halves of it.</strong></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="andrej-karpathy">Andrej Karpathy</h3>
@@ -1137,14 +1137,14 @@ AJ
 <li class="fragment">Web Clipper ingestion for articles and links</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h3 id="aj-the-neural-vault">AJ — The Neural Vault</h3>
+<h3 id="what-i-built-the-neural-vault">What I Built — The Neural Vault</h3>
 <p><em>The AI as Collaborator</em></p>
-<p>Built independently before Karpathy’s post, starting from a different problem: how to load context into an active session, not just store it.</p>
-<p><strong>What AJ built independently:</strong></p>
+<p>I built the core of this system independently, starting from a different problem: not how to store knowledge, but how to <strong>load it into an active session</strong>.</p>
+<p><strong>What I built independently:</strong></p>
 <ul>
-<li class="fragment"><strong>Two-layer memory split</strong>: Claude’s ambient memory (who you are) + Obsidian wiki (what you know)</li>
-<li class="fragment"><strong>Context Injection Protocol</strong>: a formal prompt template — a structured handshake between your vault and the model</li>
-<li class="fragment"><strong><code>COMMIT:</code> flag</strong>: Claude marks insights worth saving mid-session</li>
+<li class="fragment"><strong>Two-layer memory split</strong>: separating Claude’s ambient memory (who you are) from a structured wiki (what you know) — Karpathy’s system doesn’t address this at all</li>
+<li class="fragment"><strong>Context Injection Protocol</strong>: a formal, repeatable prompt template — a structured handshake between your vault and the model</li>
+<li class="fragment"><strong><code>COMMIT:</code> flag</strong>: I ask Claude to mark insights worth saving mid-session, so nothing gets lost</li>
 <li class="fragment"><strong>Auto-save daemon</strong>: every file save = a silent git commit. Zero manual steps. Fully reversible.</li>
 </ul>
 </div></div>

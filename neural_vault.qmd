@@ -64,9 +64,9 @@ format:
 
 ---
 
-## Karpathy's System vs. The Neural Vault {.smaller}
+## Standing on Each Other's Shoulders {.smaller}
 
-**Two independent approaches to the same problem — and where each one wins.**
+**Karpathy and I arrived at the same problem from different directions — and solved different halves of it.**
 
 :::: {.columns}
 
@@ -85,16 +85,16 @@ Karpathy published his LLM Knowledge Base method in April 2025. His core insight
 :::
 
 ::: {.column width="50%"}
-### AJ — The Neural Vault
+### What I Built — The Neural Vault
 *The AI as Collaborator*
 
-Built independently before Karpathy's post, starting from a different problem: how to load context into an active session, not just store it.
+I built the core of this system independently, starting from a different problem: not how to store knowledge, but how to **load it into an active session**.
 
-**What AJ built independently:**
+**What I built independently:**
 
-- **Two-layer memory split**: Claude's ambient memory (who you are) + Obsidian wiki (what you know)
-- **Context Injection Protocol**: a formal prompt template — a structured handshake between your vault and the model
-- **`COMMIT:` flag**: Claude marks insights worth saving mid-session
+- **Two-layer memory split**: separating Claude's ambient memory (who you are) from a structured wiki (what you know) — Karpathy's system doesn't address this at all
+- **Context Injection Protocol**: a formal, repeatable prompt template — a structured handshake between your vault and the model
+- **`COMMIT:` flag**: I ask Claude to mark insights worth saving mid-session, so nothing gets lost
 - **Auto-save daemon**: every file save = a silent git commit. Zero manual steps. Fully reversible.
 :::
 
