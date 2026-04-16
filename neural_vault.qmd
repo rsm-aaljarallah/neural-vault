@@ -42,7 +42,7 @@ And before anyone says "just use RAG" — that's a valid enterprise solution. Bu
 **A conversation about markdown files sent me down a rabbit hole.**
 
 ::: {.incremental}
-- A conversation with a professor about markdown note-taking workflows was the spark. I went home that night and started building.
+- A conversation with Professor Vincent about markdown note-taking workflows — three months ago — was the spark. I went home that night and started building.
 - I was managing complex, multi-threaded technical work and kept hitting the same wall: re-explaining context every single session.
 - The result is the **Neural Vault** — a structured Obsidian vault that works alongside Claude's native memory to give you persistent, portable, project-specific context across every AI session.
 - No vector database. No infrastructure. Just markdown files, a disciplined workflow, and a few shell scripts.
@@ -51,7 +51,7 @@ And before anyone says "just use RAG" — that's a valid enterprise solution. Bu
 ::: {.notes}
 This system didn't come from a research paper. It came from a frustrating Tuesday night.
 
-I was in a conversation about markdown files and note-taking — and something clicked. I went home and started building. Not a prototype. The actual thing. I had a specific problem: I was doing complex, multi-threaded work and every AI session felt like meeting a colleague who had amnesia.
+Three months ago, I was in a conversation with Professor Vincent about markdown files and note-taking — and something clicked. I went home and started building. Not a prototype. The actual thing. I had a specific problem: I was doing complex, multi-threaded work and every AI session felt like meeting a colleague who had amnesia.
 
 What I built is called the Neural Vault. The name sounds technical, but the concept is simple: it's a notebook that the AI can read. A structured set of plain text files that you paste into Claude at the start of every session — so it already knows who you are, what you're working on, and what you've already decided.
 
