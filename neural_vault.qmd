@@ -60,43 +60,11 @@ No cloud. No API. No setup beyond installing a free app. Just files, a habit, an
 
 ---
 
-## Inside the Obsidian Brain {.smaller}
+## Where the Brain Idea Came From — and What It's Missing {.smaller}
 
-**Your knowledge, connected and readable by both you and the AI.**
+**The `Meta/` folder is the key: it contains `About_Me.md` — a plain text file that tells the AI who you are.**
 
-:::: {.columns}
-
-::: {.column width="45%"}
-<br>
-
-- **Inbox**: Raw capture — quick, unorganized thoughts.
-- **Wiki**: Structured knowledge the AI helped you write.
-- **Meta**: `About_Me`, Index, Prompts, and Session Log.
-- **Archive**: Deprecated notes, kept for history.
-- **Agent Sandbox**: A messy workspace for AI agents — kept separate so your vault stays clean.
-:::
-
-::: {.column width="55%"}
-![](obsidian_graph.png){width="100%" fig-align="center"}
-:::
-
-::::
-
-::: {.notes}
-So why Obsidian specifically? A few reasons — but the most important one is this: every note is a plain text file stored on your own computer. Not in a cloud. Not in a proprietary format. Just a `.md` file you can open in Notepad if you want.
-
-That matters because LLMs read text. If your knowledge is in plain text files, you can hand it directly to an AI with no conversion, no API, no special integration. The format is already right.
-
-The graph you're looking at is what Obsidian calls the "graph view" — it shows how your notes link to each other. Each dot is a note. Each line is a connection. As your vault grows, this becomes a visual map of your thinking.
-
-The folder structure is simple: Inbox for raw capture, Wiki for structured knowledge, Meta for your About Me and session logs, Archive for old stuff, and Agent Sandbox for anything you let the AI write — kept separate so it doesn't pollute your curated notes.
-:::
-
----
-
-## Andrej Karpathy — *The AI as Librarian* {.smaller}
-
-**His core insight: have the LLM build and maintain a persistent wiki from raw sources.**
+**Andrej Karpathy had the same idea: use the LLM to build and maintain a persistent wiki from raw sources.**
 
 :::: {.columns style="font-size: 0.8em;"}
 
@@ -121,13 +89,15 @@ The folder structure is simple: Inbox for raw capture, Wiki for structured knowl
 ::::
 
 ::: {.notes}
-Around the same time I was building this, Andrej Karpathy — former head of AI at Tesla — published a very similar idea. 
+The most important file in the entire vault is a simple text file called About_Me.md. It lives in the Meta folder. It's a few paragraphs about who you are, how you work, and what you're focused on. Every session starts by handing this file to Claude.
+
+Around the same time I was building this, Andrej Karpathy — former head of AI at Tesla, co-founder of OpenAI — published a very similar idea. The AI community went wild for it.
 
 His insight was elegant: instead of manually writing your notes, have the LLM do it. You dump raw material — articles, highlights, rough thoughts — into a folder. A prompt tells the AI to synthesize them into clean, structured wiki entries. You review and approve. Over time, you build a knowledge base that the AI helped write.
 
 It's a brilliant system for ingesting and organizing knowledge from what you read.
 
-But here's the gap — and this is the key distinction I want you to hold onto — Karpathy's system tells you how to *build* the vault. It doesn't tell you how to *use* it in an active working session. How do you load it into Claude? How do you make sure the model has the right context before you start? That's what I built.
+But here's the gap — Karpathy's system tells you how to build the vault. It doesn't tell you how to use it in an active working session. How do you load it into Claude? How do you make sure the model has the right context before you start? That's what I built.
 :::
 
 ---
