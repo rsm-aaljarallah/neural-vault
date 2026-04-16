@@ -102,12 +102,12 @@ format:
 ![](two_layer_diagram.png){width="100%" fig-align="center"}
 :::
 
-::: {.column width="55%"}
+::: {.column width="55%" style="font-size: 0.82em;"}
 ::: {.incremental}
-- **Two-layer memory split**: Claude's ambient memory handles who you are; Obsidian handles what you know. Karpathy's system doesn't address this at all.
-- **Context Injection Protocol**: A formal, repeatable prompt template — a structured handshake that loads your vault into the model at session start.
-- **`COMMIT:` flag**: I ask Claude to mark insights worth saving mid-session. Nothing gets lost.
-- **Auto-save daemon**: Every file save triggers a silent git commit. Zero manual steps. Fully reversible.
+- **Two-layer memory split**: Claude holds *who you are*; Obsidian holds *what you know*. Karpathy doesn't address this.
+- **Context Injection Protocol**: A structured prompt that loads your vault into the model at session start.
+- **`COMMIT:` flag**: Claude marks insights worth saving mid-session — nothing gets lost.
+- **Auto-save daemon**: Every file save = a silent git commit. Zero manual steps. Fully reversible.
 :::
 :::
 
