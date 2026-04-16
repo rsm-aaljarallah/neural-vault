@@ -68,12 +68,12 @@ No cloud. No API. No setup beyond installing a free app. Just files, a habit, an
 
 :::: {.columns style="font-size: 0.8em;"}
 
-::: {.column width="28%"}
-![](karpathy.jpg){width="85%" style="border-radius: 8px; margin-top: 4px;"}
-<div style="font-size: 0.75em; color: #64748b; text-align: center; margin-top: 4px;">Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder</div>
+::: {.column width="38%"}
+![](aj_karpathy_thinking.png){width="100%" fig-align="center" style="border-radius: 8px; margin-top: 4px;"}
+<div style="font-size: 0.72em; color: #64748b; text-align: center; margin-top: 4px;">Abdullah & Karpathy — two people,<br>one problem, different solutions</div>
 :::
 
-::: {.column width="72%"}
+::: {.column width="62%"}
 ::: {.incremental}
 - **The `raw/` → `wiki/` pipeline**: You dump raw notes in a folder. A prompt tells the LLM to rewrite them into clean wiki pages.
 - **LLM-written, human-curated**: AI does the writing, you do the editing
