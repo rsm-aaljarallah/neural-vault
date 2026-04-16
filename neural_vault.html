@@ -1121,45 +1121,34 @@ AJ
 </div>
 </div></div>
 </section>
-<section id="standing-on-each-others-shoulders" class="slide level2 smaller center">
-<h2>Standing on Each Other’s Shoulders</h2>
-<p><strong>Karpathy and I arrived at the same problem from different directions — and solved different halves of it.</strong></p>
-<div class="columns">
-<div class="column" style="font-size: 0.82em;">
-<p><strong>Andrej Karpathy</strong> — <em>The AI as Librarian</em></p>
-<p>Karpathy’s core insight: have the LLM build and maintain a persistent wiki from raw sources.</p>
-<p><em>What he solved:</em></p>
+<section id="andrej-karpathy-the-ai-as-librarian" class="slide level2 smaller center">
+<h2>Andrej Karpathy — <em>The AI as Librarian</em></h2>
+<p><strong>His core insight: have the LLM build and maintain a persistent wiki from raw sources.</strong></p>
+<div>
 <ul>
-<li class="fragment">The <code>raw/</code> → <code>wiki/</code> ingestion pipeline</li>
-<li class="fragment">LLM-written, human-curated notes</li>
-<li class="fragment">Health checks to surface gaps</li>
-<li class="fragment">Web Clipper ingestion for articles</li>
-</ul>
-</div><div class="column" style="font-size: 0.82em;">
-<p><strong>What I Built — The Neural Vault</strong> — <em>The AI as Collaborator</em></p>
-<p>I built this independently: not how to store knowledge, but how to <strong>load it into an active session</strong>.</p>
-<p><em>What I built independently:</em></p>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Two-layer memory split</strong>: Claude’s ambient memory + Obsidian wiki — Karpathy doesn’t address this</li>
+<li class="fragment"><strong>The <code>raw/</code> → <code>wiki/</code> pipeline</strong>: Raw notes and web clips go in; the LLM synthesizes and files structured wiki entries</li>
+<li class="fragment"><strong>LLM-written, human-curated</strong>: The AI does the writing, you do the editing and quality control</li>
+<li class="fragment"><strong>Health checks</strong>: Periodic passes to find gaps, contradictions, and stale notes</li>
+<li class="fragment"><strong>Web Clipper ingestion</strong>: Articles and links converted to markdown and fed into the pipeline automatically</li>
 </ul>
 </div>
 <div class="fragment">
+<blockquote>
+<p><em>Karpathy solved how to <strong>build</strong> a knowledge base. He didn’t solve how to <strong>use</strong> it in an active session.</em></p>
+</blockquote>
+</div>
+</section>
+<section id="what-i-built-the-neural-vault" class="slide level2 smaller center">
+<h2>What I Built — The Neural Vault</h2>
+<p><strong>I started from a different problem: not how to store knowledge, but how to load it into an active session.</strong></p>
+<div>
 <ul>
-<li class="fragment"><strong>Context Injection Protocol</strong>: a structured session-start handshake between your vault and the model</li>
+<li class="fragment"><strong>Two-layer memory split</strong>: Claude’s ambient memory handles who you are; Obsidian handles what you know. Karpathy’s system doesn’t address this distinction at all.</li>
+<li class="fragment"><strong>Context Injection Protocol</strong>: A formal, repeatable prompt template — a structured handshake that loads your vault into the model at session start.</li>
+<li class="fragment"><strong><code>COMMIT:</code> flag</strong>: I ask Claude to mark insights worth saving mid-session. Nothing gets lost between the conversation and the vault.</li>
+<li class="fragment"><strong>Auto-save daemon</strong>: Every file save triggers a silent git commit. Zero manual steps. Every change is versioned and reversible.</li>
 </ul>
 </div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong><code>COMMIT:</code> flag</strong>: Claude marks insights worth saving mid-session</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><strong>Auto-save daemon</strong>: every save = a silent git commit. Zero manual steps.</li>
-</ul>
-</div>
-</div></div>
 </section>
 <section id="the-ultimate-setup-both-together" class="slide level2 smaller center">
 <h2>The Ultimate Setup: Both Together</h2>

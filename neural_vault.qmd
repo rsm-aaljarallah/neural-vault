@@ -64,51 +64,33 @@ format:
 
 ---
 
-## Standing on Each Other's Shoulders {.smaller}
+## Andrej Karpathy — *The AI as Librarian* {.smaller}
 
-**Karpathy and I arrived at the same problem from different directions — and solved different halves of it.**
+**His core insight: have the LLM build and maintain a persistent wiki from raw sources.**
 
-:::: {.columns}
-
-::: {.column width="50%" style="font-size: 0.82em;"}
-**Andrej Karpathy** — *The AI as Librarian*
-
-Karpathy's core insight: have the LLM build and maintain a persistent wiki from raw sources.
-
-*What he solved:*
-
-- The `raw/` → `wiki/` ingestion pipeline
-- LLM-written, human-curated notes
-- Health checks to surface gaps
-- Web Clipper ingestion for articles
+::: {.incremental}
+- **The `raw/` → `wiki/` pipeline**: Raw notes and web clips go in; the LLM synthesizes and files structured wiki entries
+- **LLM-written, human-curated**: The AI does the writing, you do the editing and quality control
+- **Health checks**: Periodic passes to find gaps, contradictions, and stale notes
+- **Web Clipper ingestion**: Articles and links converted to markdown and fed into the pipeline automatically
 :::
 
-::: {.column width="50%" style="font-size: 0.82em;"}
-**What I Built — The Neural Vault** — *The AI as Collaborator*
+. . .
 
-I built this independently: not how to store knowledge, but how to **load it into an active session**.
+> *Karpathy solved how to **build** a knowledge base. He didn't solve how to **use** it in an active session.*
 
-*What I built independently:*
+---
 
-::: {.fragment}
-- **Two-layer memory split**: Claude's ambient memory + Obsidian wiki — Karpathy doesn't address this
+## What I Built — The Neural Vault {.smaller}
+
+**I started from a different problem: not how to store knowledge, but how to load it into an active session.**
+
+::: {.incremental}
+- **Two-layer memory split**: Claude's ambient memory handles who you are; Obsidian handles what you know. Karpathy's system doesn't address this distinction at all.
+- **Context Injection Protocol**: A formal, repeatable prompt template — a structured handshake that loads your vault into the model at session start.
+- **`COMMIT:` flag**: I ask Claude to mark insights worth saving mid-session. Nothing gets lost between the conversation and the vault.
+- **Auto-save daemon**: Every file save triggers a silent git commit. Zero manual steps. Every change is versioned and reversible.
 :::
-
-::: {.fragment}
-- **Context Injection Protocol**: a structured session-start handshake between your vault and the model
-:::
-
-::: {.fragment}
-- **`COMMIT:` flag**: Claude marks insights worth saving mid-session
-:::
-
-::: {.fragment}
-- **Auto-save daemon**: every save = a silent git commit. Zero manual steps.
-:::
-
-:::
-
-::::
 
 ---
 
