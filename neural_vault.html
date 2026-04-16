@@ -1124,9 +1124,8 @@ AJ
 <section id="standing-on-each-others-shoulders" class="slide level2 smaller center">
 <h2>Standing on Each Other’s Shoulders</h2>
 <p><strong>Karpathy and I arrived at the same problem from different directions — and solved different halves of it.</strong></p>
-<div style="font-size: 0.78em;">
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="font-size: 0.82em;">
 <p><strong>Andrej Karpathy</strong> — <em>The AI as Librarian</em></p>
 <p>Karpathy’s core insight: have the LLM build and maintain a persistent wiki from raw sources.</p>
 <p><em>What he solved:</em></p>
@@ -1136,18 +1135,31 @@ AJ
 <li class="fragment">Health checks to surface gaps</li>
 <li class="fragment">Web Clipper ingestion for articles</li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="font-size: 0.82em;">
 <p><strong>What I Built — The Neural Vault</strong> — <em>The AI as Collaborator</em></p>
-<p>I built this independently, solving a different problem: not how to store knowledge, but how to <strong>load it into an active session</strong>.</p>
+<p>I built this independently: not how to store knowledge, but how to <strong>load it into an active session</strong>.</p>
 <p><em>What I built independently:</em></p>
+<div class="fragment">
 <ul>
-<li class="fragment"><strong>Two-layer memory split</strong>: Claude’s ambient memory (who you are) + Obsidian wiki (what you know) — Karpathy doesn’t address this</li>
+<li class="fragment"><strong>Two-layer memory split</strong>: Claude’s ambient memory + Obsidian wiki — Karpathy doesn’t address this</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li class="fragment"><strong>Context Injection Protocol</strong>: a structured session-start handshake between your vault and the model</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li class="fragment"><strong><code>COMMIT:</code> flag</strong>: Claude marks insights worth saving mid-session</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li class="fragment"><strong>Auto-save daemon</strong>: every save = a silent git commit. Zero manual steps.</li>
 </ul>
-</div></div>
 </div>
+</div></div>
 </section>
 <section id="the-ultimate-setup-both-together" class="slide level2 smaller center">
 <h2>The Ultimate Setup: Both Together</h2>

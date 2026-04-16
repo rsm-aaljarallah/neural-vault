@@ -68,11 +68,9 @@ format:
 
 **Karpathy and I arrived at the same problem from different directions — and solved different halves of it.**
 
-<div style="font-size: 0.78em;">
-
 :::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="50%" style="font-size: 0.82em;"}
 **Andrej Karpathy** — *The AI as Librarian*
 
 Karpathy's core insight: have the LLM build and maintain a persistent wiki from raw sources.
@@ -85,22 +83,32 @@ Karpathy's core insight: have the LLM build and maintain a persistent wiki from 
 - Web Clipper ingestion for articles
 :::
 
-::: {.column width="50%"}
+::: {.column width="50%" style="font-size: 0.82em;"}
 **What I Built — The Neural Vault** — *The AI as Collaborator*
 
-I built this independently, solving a different problem: not how to store knowledge, but how to **load it into an active session**.
+I built this independently: not how to store knowledge, but how to **load it into an active session**.
 
 *What I built independently:*
 
-- **Two-layer memory split**: Claude's ambient memory (who you are) + Obsidian wiki (what you know) — Karpathy doesn't address this
+::: {.fragment}
+- **Two-layer memory split**: Claude's ambient memory + Obsidian wiki — Karpathy doesn't address this
+:::
+
+::: {.fragment}
 - **Context Injection Protocol**: a structured session-start handshake between your vault and the model
+:::
+
+::: {.fragment}
 - **`COMMIT:` flag**: Claude marks insights worth saving mid-session
+:::
+
+::: {.fragment}
 - **Auto-save daemon**: every save = a silent git commit. Zero manual steps.
 :::
 
-::::
+:::
 
-</div>
+::::
 
 ---
 
