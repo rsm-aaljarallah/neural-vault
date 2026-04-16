@@ -68,37 +68,39 @@ format:
 
 **Karpathy and I arrived at the same problem from different directions — and solved different halves of it.**
 
+<div style="font-size: 0.78em;">
+
 :::: {.columns}
 
 ::: {.column width="50%"}
-### Andrej Karpathy
-*The AI as Librarian*
+**Andrej Karpathy** — *The AI as Librarian*
 
-Karpathy published his LLM Knowledge Base method in April 2025. His core insight: have the LLM incrementally build and maintain a persistent wiki from raw sources.
+Karpathy's core insight: have the LLM build and maintain a persistent wiki from raw sources.
 
-**What he solved:**
+*What he solved:*
 
 - The `raw/` → `wiki/` ingestion pipeline
 - LLM-written, human-curated notes
-- Health checks to find gaps and inconsistencies
-- Web Clipper ingestion for articles and links
+- Health checks to surface gaps
+- Web Clipper ingestion for articles
 :::
 
 ::: {.column width="50%"}
-### What I Built — The Neural Vault
-*The AI as Collaborator*
+**What I Built — The Neural Vault** — *The AI as Collaborator*
 
-I built the core of this system independently, starting from a different problem: not how to store knowledge, but how to **load it into an active session**.
+I built this independently, solving a different problem: not how to store knowledge, but how to **load it into an active session**.
 
-**What I built independently:**
+*What I built independently:*
 
-- **Two-layer memory split**: separating Claude's ambient memory (who you are) from a structured wiki (what you know) — Karpathy's system doesn't address this at all
-- **Context Injection Protocol**: a formal, repeatable prompt template — a structured handshake between your vault and the model
-- **`COMMIT:` flag**: I ask Claude to mark insights worth saving mid-session, so nothing gets lost
-- **Auto-save daemon**: every file save = a silent git commit. Zero manual steps. Fully reversible.
+- **Two-layer memory split**: Claude's ambient memory (who you are) + Obsidian wiki (what you know) — Karpathy doesn't address this
+- **Context Injection Protocol**: a structured session-start handshake between your vault and the model
+- **`COMMIT:` flag**: Claude marks insights worth saving mid-session
+- **Auto-save daemon**: every save = a silent git commit. Zero manual steps.
 :::
 
 ::::
+
+</div>
 
 ---
 
