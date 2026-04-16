@@ -22,7 +22,7 @@ format:
 ::: {.incremental}
 - **Constant Re-explaining**: You spend the first ten minutes rebuilding context — your project, your conventions, your decisions, your background. Then the session ends. Next time, you do it again.
 - **Nothing Accumulates**: The model is sharp but stateless. That statelessness is the real ceiling, not the model's intelligence.
-- **Enterprise Solutions Are Overkill**: Companies use RAG and vector databases, but for personal use they are overbuilt, opaque, and fragile. You cannot debug a cosine similarity score by opening a markdown file.
+- **Enterprise Solutions Are Complex**: Tools like RAG and vector databases exist, but they take time to learn, cost money to run, and are difficult to debug. For a single person, we need something simpler.
 :::
 
 ::: {.notes}
@@ -32,7 +32,7 @@ That's the problem. Every time you open a new Claude or ChatGPT session, the mod
 
 The frustrating part is that the model itself is incredibly capable. The bottleneck isn't intelligence. It's context. What you put in the window determines what you get out.
 
-And before anyone says "just use RAG" — that's a valid enterprise solution, but it's massively overbuilt for one person. You don't need a vector database to remember your own notes. You need a system. That's what we're going to talk about today.
+And before anyone says "just use RAG" — that's a valid enterprise solution. But for one person, it's often too much. It takes time to set up, it costs money, and if it breaks, it's hard to fix. We don't need a complex database to remember our own notes. We just need a simple system.
 :::
 
 ---
@@ -107,7 +107,7 @@ The folder structure is simple: Inbox for raw capture, Wiki for structured knowl
 
 ::: {.column width="72%"}
 ::: {.incremental}
-- **The `raw/` → `wiki/` pipeline**: Raw notes go in; the LLM synthesizes structured wiki entries
+- **The `raw/` → `wiki/` pipeline**: You dump raw notes in a folder. A prompt tells the LLM to rewrite them into clean wiki pages.
 - **LLM-written, human-curated**: AI does the writing, you do the editing
 - **Health checks**: Periodic passes to find gaps and stale notes
 - **Web Clipper ingestion**: Articles converted to markdown automatically
@@ -121,9 +121,9 @@ The folder structure is simple: Inbox for raw capture, Wiki for structured knowl
 ::::
 
 ::: {.notes}
-Around the same time I was building this, Andrej Karpathy — if you don't know him, he's one of the most respected AI researchers in the world, co-founder of OpenAI, former head of AI at Tesla — published a very similar idea. The AI community went wild for it.
+Around the same time I was building this, Andrej Karpathy — former head of AI at Tesla — published a very similar idea. 
 
-His insight was elegant: instead of manually writing your notes, have the LLM do it. You dump raw material — articles, highlights, rough thoughts — into a folder. The AI synthesizes them into clean, structured wiki entries. You review and approve. Over time, you build a knowledge base that the AI helped write.
+His insight was elegant: instead of manually writing your notes, have the LLM do it. You dump raw material — articles, highlights, rough thoughts — into a folder. A prompt tells the AI to synthesize them into clean, structured wiki entries. You review and approve. Over time, you build a knowledge base that the AI helped write.
 
 It's a brilliant system for ingesting and organizing knowledge from what you read.
 
@@ -132,9 +132,9 @@ But here's the gap — and this is the key distinction I want you to hold onto �
 
 ---
 
-## What I Built — The Neural Vault {.smaller}
+## Context Injection Protocol {.smaller}
 
-**I started from a different problem: not how to store knowledge, but how to load it into an active session.**
+**How to load the brain into an active session.**
 
 :::: {.columns}
 
@@ -144,87 +144,60 @@ But here's the gap — and this is the key distinction I want you to hold onto �
 
 ::: {.column width="55%" style="font-size: 0.82em;"}
 ::: {.incremental}
-- **Two-layer memory split**: Claude holds *who you are*; Obsidian holds *what you know*. Karpathy doesn't address this.
-- **Context Injection Protocol**: A structured prompt that loads your vault into the model at session start.
-- **`COMMIT:` flag**: Claude marks insights worth saving mid-session — nothing gets lost.
-- **Auto-save daemon**: Every file save = a silent git commit. Zero manual steps. Fully reversible.
+- **Two-layer memory split**: Claude holds *who you are*; Obsidian holds *what you know*. 
+- **The Handshake**: A structured prompt template used at the start of every session.
+- **Example Prompt**:
+  *"I am starting a new session. Read the attached `About_Me.md` for my background, and `Project_Spec.md` for our current goal. Do not start working yet. Acknowledge you have read the context."*
+- **The Result**: The AI starts the session already knowing your goals, your style, and what you decided yesterday.
 :::
 :::
 
 ::::
 
 ::: {.notes}
-Here's what I built independently — and I want to be clear about what "independently" means here. I had the core of this system before Karpathy's post went up. When I read his work, I had to map carefully what we converged on, what he solved that I hadn't, and what I solved that he didn't.
+So how do we actually load this knowledge into the AI? I call it the Context Injection Protocol.
 
-The diagram on the left shows the key idea: a two-layer memory split. Layer one is Claude's native memory — the ambient stuff, who you are, your working style, your preferences. Layer two is your Obsidian wiki — the technical knowledge, project decisions, session history. These are different kinds of memory and they belong in different places.
+The diagram on the left shows the key idea: a two-layer memory split. Layer one is Claude's native memory — the ambient stuff, who you are, your working style. Layer two is your Obsidian wiki — the technical knowledge, project decisions, session history. 
 
 The Context Injection Protocol is the bridge. It's a structured prompt template — a handshake — that you use at the start of every session to load the right parts of your vault into the model. Not everything. Just what's relevant.
 
-The COMMIT flag is something I'm particularly proud of. Mid-session, when Claude surfaces a good insight, I've trained it to mark it with the word COMMIT. That's my signal to save it to the vault before the session ends. Nothing gets lost in the conversation.
+For example, you might paste in a prompt that says: "I am starting a new session. Read the attached About_Me file for my background, and Project_Spec for our current goal. Do not start working yet. Acknowledge you have read the context."
 
-And the auto-save daemon means every time I save a file in Obsidian, a shell script silently runs a git commit in the background. My entire vault is versioned. I can roll back to any point in time. Zero manual effort.
+The result? The AI starts the session already knowing your goals, your style, and what you decided yesterday. You never have to re-explain yourself.
 :::
 
 ---
 
-## The Ultimate Setup: Both Together {.smaller}
+## The `COMMIT:` Flag {.smaller}
 
-**Use Karpathy's method to *build* the vault. Use Abdullah's method to *load* it.**
-
-![](context_engineering.png){width="68%" fig-align="center"}
-
-::: {.fragment}
-<div style="font-size: 0.85em; color: #475569; text-align: center; margin-top: 10px;">
-Karpathy fills the vault with knowledge from what you read. Abdullah's system loads that vault into every active work session — so the AI already knows your goals, your style, and what you decided yesterday.
-</div>
-:::
-
-::: {.notes}
-This is the synthesis slide — and this is the honest answer to "whose system is better?"
-
-Neither. They solve different halves of the same problem.
-
-Karpathy's method is the best way I've seen to build a knowledge base from raw material. His raw-to-wiki pipeline is genuinely elegant. If you read a lot and want the AI to help you synthesize it, use his approach.
-
-My system is the best way I've found to load that knowledge into an active session and keep it updated as you work. The Context Injection Protocol, the two-layer split, the COMMIT flag — these are all about the live working session, not the archive.
-
-The diagram here shows how context engineering works at a high level — how you take raw inputs and shape them into a final prompt that the model actually sees. The vault is your personal implementation of that pipeline.
-
-Use both. Build with Karpathy. Load with the Neural Vault. That's the complete system.
-:::
-
----
-
-## The Result: Compounding Intelligence {.smaller}
-
-**The system gets better every time you use it.**
+**How to improve the brain as you go.**
 
 ::: {.incremental}
-- **Stop Re-explaining**: The AI always knows your context because you hand it the ready-made summary.
+- **The Mid-Session Problem**: Great ideas happen in the middle of a chat, but get lost when the chat ends.
+- **The Solution**: Tell Claude to mark insights worth saving.
+- **How it works**:
+  *"If we reach a decision or write a good piece of code, prefix it with `COMMIT:`. This is my signal to save it to my vault."*
 - **Ideas Are Never Lost**: Every good session turns into a permanent note in your notebook.
-- **You Own Everything**: Plain markdown files on your computer. No vendor lock-in. Switch models tomorrow — the vault comes with you.
 - **An Investment in the Future**: The notebook you build today will make whatever AI you use tomorrow smarter and more aligned with you.
 :::
 
-. . .
-
-> *"The vault you build today is the training set for the model you run tomorrow."*
-
 ::: {.notes}
-Let me close with why this matters beyond productivity.
+Loading the brain is step one. Step two is improving it as you work.
 
-Most people think about AI tools as things you use. You open a chat, you ask a question, you get an answer, you close the tab. The interaction is disposable.
+The problem is that great ideas happen in the middle of a chat. But when the chat ends, those ideas are gone. 
 
-The Neural Vault flips that. Every session becomes an investment. Every good insight gets saved. Every decision gets recorded. Over weeks and months, your vault becomes a genuine external brain — and every AI session you have is better than the last because the context you bring to it is richer.
+The solution is something I call the COMMIT flag. In my initial instructions, I tell Claude: "If we reach a decision or write a good piece of code, prefix it with the word COMMIT."
 
-You also own everything. These are plain text files on your computer. If Claude shuts down tomorrow, your vault is intact. If a better model comes out next year, you bring your vault with you. No lock-in. No data held hostage.
+When I see that word pop up in the chat, it's my signal. I know I need to copy that specific block of text and save it into my Obsidian vault before I close the window. Nothing gets lost.
 
-The quote I want to leave you with is this: "The vault you build today is the training set for the model you run tomorrow." That's not a metaphor. That's literally what context engineering is. You are curating the information that shapes every future interaction. Start building now.
+Because of this, every good session turns into a permanent note in your notebook. You are constantly adding to your vault as you work with AI. 
+
+And that's the real power of this system. The notebook you build today will make whatever AI you use tomorrow smarter and more aligned with you. You are investing in future you.
 :::
 
 ---
 
-## Access the Full System {.smaller}
+## Access the Full System {data-incremental="false" .smaller}
 
 **All scripts, templates, and documentation — open source on GitHub.**
 
