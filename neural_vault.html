@@ -1087,6 +1087,22 @@ Abdullah
 <li class="fragment"><strong>Enterprise Solutions Are Overkill</strong>: Companies use RAG and vector databases, but for personal use they are overbuilt, opaque, and fragile. You cannot debug a cosine similarity score by opening a markdown file.</li>
 </ul>
 </div>
+<aside class="notes">
+<p>Start by asking the room: “Has anyone here ever had to re-explain yourself to an AI that should already know you?”</p>
+<p>That’s the problem. Every time you open a new Claude or ChatGPT session, the model has no memory of you. It doesn’t know your name, your project, your preferences, or what you decided last week. You’re starting from zero — every single time.</p>
+<p>The frustrating part is that the model itself is incredibly capable. The bottleneck isn’t intelligence. It’s context. What you put in the window determines what you get out.</p>
+<p>And before anyone says “just use RAG” — that’s a valid enterprise solution, but it’s massively overbuilt for one person. You don’t need a vector database to remember your own notes. You need a system. That’s what we’re going to talk about today.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="how-this-started" class="slide level2 smaller center">
 <h2>How This Started</h2>
@@ -1099,6 +1115,22 @@ Abdullah
 <li class="fragment">No vector database. No infrastructure. Just markdown files, a disciplined workflow, and a few shell scripts.</li>
 </ul>
 </div>
+<aside class="notes">
+<p>This system didn’t come from a research paper. It came from a frustrating Tuesday night.</p>
+<p>I was in a conversation about markdown files and note-taking — and something clicked. I went home and started building. Not a prototype. The actual thing. I had a specific problem: I was doing complex, multi-threaded work and every AI session felt like meeting a colleague who had amnesia.</p>
+<p>What I built is called the Neural Vault. The name sounds technical, but the concept is simple: it’s a notebook that the AI can read. A structured set of plain text files that you paste into Claude at the start of every session — so it already knows who you are, what you’re working on, and what you’ve already decided.</p>
+<p>No cloud. No API. No setup beyond installing a free app. Just files, a habit, and a few scripts if you want automation.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="inside-the-obsidian-brain" class="slide level2 smaller center">
 <h2>Inside the Obsidian Brain</h2>
@@ -1120,6 +1152,22 @@ Abdullah
 </figure>
 </div>
 </div></div>
+<aside class="notes">
+<p>So why Obsidian specifically? A few reasons — but the most important one is this: every note is a plain text file stored on your own computer. Not in a cloud. Not in a proprietary format. Just a <code>.md</code> file you can open in Notepad if you want.</p>
+<p>That matters because LLMs read text. If your knowledge is in plain text files, you can hand it directly to an AI with no conversion, no API, no special integration. The format is already right.</p>
+<p>The graph you’re looking at is what Obsidian calls the “graph view” — it shows how your notes link to each other. Each dot is a note. Each line is a connection. As your vault grows, this becomes a visual map of your thinking.</p>
+<p>The folder structure is simple: Inbox for raw capture, Wiki for structured knowledge, Meta for your About Me and session logs, Archive for old stuff, and Agent Sandbox for anything you let the AI write — kept separate so it doesn’t pollute your curated notes.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="andrej-karpathy-the-ai-as-librarian" class="slide level2 smaller center">
 <h2>Andrej Karpathy — <em>The AI as Librarian</em></h2>
@@ -1144,6 +1192,22 @@ Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder
 <p><em>Karpathy solved how to <strong>build</strong> a knowledge base. He didn’t solve how to <strong>use</strong> it in an active session.</em></p>
 </blockquote>
 </div></div>
+<aside class="notes">
+<p>Around the same time I was building this, Andrej Karpathy — if you don’t know him, he’s one of the most respected AI researchers in the world, co-founder of OpenAI, former head of AI at Tesla — published a very similar idea. The AI community went wild for it.</p>
+<p>His insight was elegant: instead of manually writing your notes, have the LLM do it. You dump raw material — articles, highlights, rough thoughts — into a folder. The AI synthesizes them into clean, structured wiki entries. You review and approve. Over time, you build a knowledge base that the AI helped write.</p>
+<p>It’s a brilliant system for ingesting and organizing knowledge from what you read.</p>
+<p>But here’s the gap — and this is the key distinction I want you to hold onto — Karpathy’s system tells you how to <em>build</em> the vault. It doesn’t tell you how to <em>use</em> it in an active working session. How do you load it into Claude? How do you make sure the model has the right context before you start? That’s what I built.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="what-i-built-the-neural-vault" class="slide level2 smaller center">
 <h2>What I Built — The Neural Vault</h2>
@@ -1165,6 +1229,23 @@ Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder
 </ul>
 </div>
 </div></div>
+<aside class="notes">
+<p>Here’s what I built independently — and I want to be clear about what “independently” means here. I had the core of this system before Karpathy’s post went up. When I read his work, I had to map carefully what we converged on, what he solved that I hadn’t, and what I solved that he didn’t.</p>
+<p>The diagram on the left shows the key idea: a two-layer memory split. Layer one is Claude’s native memory — the ambient stuff, who you are, your working style, your preferences. Layer two is your Obsidian wiki — the technical knowledge, project decisions, session history. These are different kinds of memory and they belong in different places.</p>
+<p>The Context Injection Protocol is the bridge. It’s a structured prompt template — a handshake — that you use at the start of every session to load the right parts of your vault into the model. Not everything. Just what’s relevant.</p>
+<p>The COMMIT flag is something I’m particularly proud of. Mid-session, when Claude surfaces a good insight, I’ve trained it to mark it with the word COMMIT. That’s my signal to save it to the vault before the session ends. Nothing gets lost in the conversation.</p>
+<p>And the auto-save daemon means every time I save a file in Obsidian, a shell script silently runs a git commit in the background. My entire vault is versioned. I can roll back to any point in time. Zero manual effort.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="the-ultimate-setup-both-together" class="slide level2 smaller center">
 <h2>The Ultimate Setup: Both Together</h2>
@@ -1175,6 +1256,24 @@ Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder
 <p>Karpathy fills the vault with knowledge from what you read. Abdullah’s system loads that vault into every active work session — so the AI already knows your goals, your style, and what you decided yesterday.</p>
 </div>
 </div>
+<aside class="notes">
+<p>This is the synthesis slide — and this is the honest answer to “whose system is better?”</p>
+<p>Neither. They solve different halves of the same problem.</p>
+<p>Karpathy’s method is the best way I’ve seen to build a knowledge base from raw material. His raw-to-wiki pipeline is genuinely elegant. If you read a lot and want the AI to help you synthesize it, use his approach.</p>
+<p>My system is the best way I’ve found to load that knowledge into an active session and keep it updated as you work. The Context Injection Protocol, the two-layer split, the COMMIT flag — these are all about the live working session, not the archive.</p>
+<p>The diagram here shows how context engineering works at a high level — how you take raw inputs and shape them into a final prompt that the model actually sees. The vault is your personal implementation of that pipeline.</p>
+<p>Use both. Build with Karpathy. Load with the Neural Vault. That’s the complete system.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </section>
 <section id="the-result-compounding-intelligence" class="slide level2 smaller center">
 <h2>The Result: Compounding Intelligence</h2>
@@ -1191,6 +1290,23 @@ Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder
 <blockquote>
 <p><em>“The vault you build today is the training set for the model you run tomorrow.”</em></p>
 </blockquote>
+<aside class="notes">
+<p>Let me close with why this matters beyond productivity.</p>
+<p>Most people think about AI tools as things you use. You open a chat, you ask a question, you get an answer, you close the tab. The interaction is disposable.</p>
+<p>The Neural Vault flips that. Every session becomes an investment. Every good insight gets saved. Every decision gets recorded. Over weeks and months, your vault becomes a genuine external brain — and every AI session you have is better than the last because the context you bring to it is richer.</p>
+<p>You also own everything. These are plain text files on your computer. If Claude shuts down tomorrow, your vault is intact. If a better model comes out next year, you bring your vault with you. No lock-in. No data held hostage.</p>
+<p>The quote I want to leave you with is this: “The vault you build today is the training set for the model you run tomorrow.” That’s not a metaphor. That’s literally what context engineering is. You are curating the information that shapes every future interaction. Start building now.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 </div>
 </section>
 <section id="access-the-full-system" class="slide level2 smaller center">
@@ -1215,6 +1331,22 @@ Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder
 </figure>
 </div>
 </div></div>
+<aside class="notes">
+<p>Everything I’ve shown you today is on GitHub — free, open source, ready to use.</p>
+<p>Scan the QR code or go to github.com/rsm-aaljarallah and find the neural-vault repo. You’ll find the folder structure guide, the About Me template to fill in, the Context Injection Protocol prompt, and the auto-save script if you want to set up versioning.</p>
+<p>The presentation itself is also in the repo as a Quarto <code>.qmd</code> file — so if you want to adapt it, fork it, or build on it, everything is there.</p>
+<p>I’m happy to take questions. And if you want to go deeper on any part of this — the vault structure, the injection protocol, the auto-save setup — come find me after.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
 
 </section>
     </div>
