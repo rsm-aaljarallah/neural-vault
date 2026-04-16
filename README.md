@@ -82,7 +82,7 @@ Weekly         →  Paste Index.md into Claude → find gaps and contradictions
 This system is a hybrid of independent work and community contributions:
 
 - **Andrej Karpathy** — the raw → wiki ingestion pipeline, LLM-as-librarian framing, health checks
-- **AJ (this repo)** — two-layer memory split, Context Injection Protocol, `COMMIT:` flag, auto-save daemon, Meta/ control layer
+- **Abdullah (this repo)** — two-layer memory split, Context Injection Protocol, `COMMIT:` flag, auto-save daemon, Meta/ control layer
 - **Community (Steph Ango et al.)** — Agent Sandbox pattern, git versioning, Dataview frontmatter
 
 ---
@@ -98,4 +98,4 @@ quarto render neural_vault.qmd
 
 ---
 
-*Built by [AJ](https://github.com/rsm-aaljarallah)*
+*Built by [Abdullah](https://github.com/rsm-aaljarallah)*

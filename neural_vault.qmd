@@ -1,7 +1,7 @@
 ---
 title: "The Neural Vault"
 subtitle: "How to Build a Second Brain with Obsidian and AI"
-author: "AJ"
+author: "Abdullah"
 date: "2026-04-10"
 format:
   revealjs:
@@ -96,13 +96,13 @@ format:
 
 ## The Ultimate Setup: Both Together {.smaller}
 
-**Use Karpathy's method to *build* the vault. Use AJ's method to *load* it.**
+**Use Karpathy's method to *build* the vault. Use Abdullah's method to *load* it.**
 
 ![](context_engineering.png){width="68%" fig-align="center"}
 
 ::: {.fragment}
 <div style="font-size: 0.85em; color: #475569; text-align: center; margin-top: 10px;">
-Karpathy fills the vault with knowledge from what you read. AJ's system loads that vault into every active work session — so the AI already knows your goals, your style, and what you decided yesterday.
+Karpathy fills the vault with knowledge from what you read. Abdullah's system loads that vault into every active work session — so the AI already knows your goals, your style, and what you decided yesterday.
 </div>
 :::
 
