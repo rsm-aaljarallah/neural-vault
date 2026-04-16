@@ -62,23 +62,21 @@ No cloud. No API. No setup beyond installing a free app. Just files, a habit, an
 
 ## Where the Brain Idea Came From — and What It's Missing {.smaller}
 
-**The `Meta/` folder is the key: it contains `About_Me.md` — a plain text file that tells the AI who you are.**
+**The `Meta/About_Me.md` tells the AI who you are. Karpathy had the same idea — but solved a different half.**
 
-**Andrej Karpathy had the same idea: use the LLM to build and maintain a persistent wiki from raw sources.**
+:::: {.columns style="font-size: 0.75em;"}
 
-:::: {.columns style="font-size: 0.8em;"}
-
-::: {.column width="38%"}
-![](aj_karpathy_thinking.png){width="100%" fig-align="center" style="border-radius: 8px; margin-top: 4px;"}
-<div style="font-size: 0.72em; color: #64748b; text-align: center; margin-top: 4px;">Abdullah & Karpathy — two people,<br>one problem, different solutions</div>
+::: {.column width="40%"}
+![](aj_karpathy_thinking.png){width="100%" fig-align="center" style="border-radius: 8px; max-height: 280px; object-fit: cover;"}
+<div style="font-size: 0.72em; color: #64748b; text-align: center; margin-top: 4px;">Two people, one problem, different solutions</div>
 :::
 
-::: {.column width="62%"}
+::: {.column width="60%"}
 ::: {.incremental}
-- **The `raw/` → `wiki/` pipeline**: You dump raw notes in a folder. A prompt tells the LLM to rewrite them into clean wiki pages.
-- **LLM-written, human-curated**: AI does the writing, you do the editing
+- **The `raw/` → `wiki/` pipeline**: Dump raw notes in; the LLM rewrites them into clean wiki pages
+- **LLM-written, human-curated**: AI writes, you edit
 - **Health checks**: Periodic passes to find gaps and stale notes
-- **Web Clipper ingestion**: Articles converted to markdown automatically
+- **Web Clipper ingestion**: Articles auto-converted to markdown
 :::
 
 . . .
@@ -167,7 +165,7 @@ And that's the real power of this system. The notebook you build today will make
 
 ---
 
-## Access the Full System {data-incremental="false" .smaller}
+## Access the Full System {.smaller}
 
 **All scripts, templates, and documentation — open source on GitHub.**
 
@@ -178,11 +176,13 @@ And that's the real power of this system. The notebook you build today will make
 
 The complete Neural Vault system is available on GitHub, including:
 
+::: {.nonincremental}
 - The full vault folder structure
 - The Context Injection Protocol prompt template
 - The `vault-autosave.sh` daemon script
 - The `About_Me.md` starter template
 - This presentation (`.qmd` source)
+:::
 
 **github.com/rsm-aaljarallah**
 :::
