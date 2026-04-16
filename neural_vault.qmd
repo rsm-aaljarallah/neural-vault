@@ -68,19 +68,19 @@ format:
 
 **His core insight: have the LLM build and maintain a persistent wiki from raw sources.**
 
-:::: {.columns}
+:::: {.columns style="font-size: 0.8em;"}
 
-::: {.column width="30%"}
-![](karpathy.jpg){width="100%" style="border-radius: 8px; margin-top: 10px;"}
-<div style="font-size: 0.7em; color: #64748b; text-align: center;">Andrej Karpathy<br>Former Tesla AI Director, OpenAI co-founder</div>
+::: {.column width="28%"}
+![](karpathy.jpg){width="85%" style="border-radius: 8px; margin-top: 4px;"}
+<div style="font-size: 0.75em; color: #64748b; text-align: center; margin-top: 4px;">Andrej Karpathy<br>Former Tesla AI Director<br>OpenAI co-founder</div>
 :::
 
-::: {.column width="70%"}
+::: {.column width="72%"}
 ::: {.incremental}
-- **The `raw/` → `wiki/` pipeline**: Raw notes and web clips go in; the LLM synthesizes and files structured wiki entries
-- **LLM-written, human-curated**: The AI does the writing, you do the editing and quality control
-- **Health checks**: Periodic passes to find gaps, contradictions, and stale notes
-- **Web Clipper ingestion**: Articles and links converted to markdown and fed into the pipeline automatically
+- **The `raw/` → `wiki/` pipeline**: Raw notes go in; the LLM synthesizes structured wiki entries
+- **LLM-written, human-curated**: AI does the writing, you do the editing
+- **Health checks**: Periodic passes to find gaps and stale notes
+- **Web Clipper ingestion**: Articles converted to markdown automatically
 :::
 
 . . .
